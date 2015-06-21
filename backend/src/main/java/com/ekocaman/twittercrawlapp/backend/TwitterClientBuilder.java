@@ -73,18 +73,7 @@ public class TwitterClientBuilder {
     public TwitterClientBuilder() {
         enableGZip = true;
         name = "hosebird-client-" + clientNum.getAndIncrement();
-//        ThreadFactory threadFactory = new ThreadFactoryBuilder()
-//                .setDaemon(true)
-//                .setNameFormat("hosebird-client-io-thread-%d")
-//                .build();
-
         executorService = Executors.newSingleThreadExecutor(ThreadManager.currentRequestThreadFactory());
-
-//        ThreadFactory rateTrackerThreadFactory = new ThreadFactoryBuilder()
-//                .setDaemon(true)
-//                .setNameFormat("hosebird-client-rateTracker-thread-%d")
-//                .build();
-
         ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(1, ThreadManager.currentRequestThreadFactory());
         rateTracker = new BasicRateTracker(30000, 100, true, scheduledExecutor);
         reconnectionManager = new BasicReconnectionManager(5);

@@ -2,6 +2,7 @@ package com.ekocaman.twittercrawlapp.backend.service;
 
 import com.googlecode.objectify.Key;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.ekocaman.twittercrawlapp.backend.OfyService.ofy;
@@ -9,7 +10,7 @@ import static com.ekocaman.twittercrawlapp.backend.OfyService.ofy;
 public abstract class AbstractService<T> {
     private final Class<T> typeParameterClass;
 
-    protected AbstractService(Class<T> typeParameterClass) {
+    public AbstractService(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
     }
 
@@ -48,5 +49,9 @@ public abstract class AbstractService<T> {
     public T findById(String id) {
         T entity = ofy().load().type(typeParameterClass).id(id).safe();
         return entity;
+    }
+
+    public List<T> findAll() {
+        return ofy().load().type(typeParameterClass).list();
     }
 }

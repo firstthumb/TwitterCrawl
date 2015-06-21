@@ -1,5 +1,7 @@
 package com.ekocaman.twittercrawlapp.backend;
 
+import com.ekocaman.twittercrawlapp.backend.entity.TweetEntity;
+import com.ekocaman.twittercrawlapp.backend.entity.TwitterCronEntity;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
@@ -12,6 +14,8 @@ public class OfyService {
 
     static {
         ObjectifyService.register(RegistrationRecord.class);
+        ObjectifyService.register(TwitterCronEntity.class);
+        ObjectifyService.register(TweetEntity.class);
     }
 
     public static Objectify ofy() {

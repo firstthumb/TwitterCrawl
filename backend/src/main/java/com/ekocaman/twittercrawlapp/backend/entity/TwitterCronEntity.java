@@ -18,12 +18,13 @@ public class TwitterCronEntity {
 
 
     public TwitterCronEntity() {
+        this.startDate = new Date();
+        this.completed = false;
     }
 
     public TwitterCronEntity(Long id) {
+        this();
         this.id = id;
-        this.startDate = new Date();
-        this.completed = false;
     }
 
     public Long getId() {

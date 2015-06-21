@@ -1,6 +1,8 @@
 package com.ekocaman.twittercrawlapp.backend.dagger;
 
+import com.ekocaman.twittercrawlapp.backend.service.TweetService;
 import com.ekocaman.twittercrawlapp.backend.service.TwitterCronService;
+import com.ekocaman.twittercrawlapp.backend.service.TwitterService;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -26,8 +28,18 @@ public class AppModule {
     }
 
     @Provides @Singleton
-    TwitterCronService provideCronService() {
-        return new TwitterCronService();
+    TwitterCronService provideCronService(TweetService tweetService) {
+        return new TwitterCronService(tweetService);
+    }
+
+    @Provides @Singleton
+    TweetService provideTweetService() {
+        return new TweetService();
+    }
+
+    @Provides @Singleton
+    TwitterService provideTwitterService() {
+        return new TwitterService();
     }
 
     @Provides @Singleton @Named("twitter.appId")

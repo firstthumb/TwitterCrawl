@@ -43,6 +43,15 @@
         <url-pattern>/twitter</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>fetchTask</servlet-name>
+        <servlet-class>com.ekocaman.twittercrawlapp.backend.task.FetchTweetsTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fetchTask</servlet-name>
+        <url-pattern>/task/twitter/fetch</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>com.ekocaman.twittercrawlapp.backend.dagger.DaggerServletContextListener</listener-class>
     </listener>
